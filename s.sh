@@ -4,6 +4,7 @@ activate() {
     . ./venv/bin/activate
 }
 activate
+
 #add colors to the prompt, green, blue, and red
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -11,6 +12,7 @@ blue=`tput setaf 4`
 magenta=`tput setaf 5`
 cyan=`tput setaf 6`
 reset= `tput sgr0`
+curl https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore > .gitignore
 pip install django
 echo "${green}Installing Django${reset}"
 echo "${blue}Enter a Project name${reset}"
