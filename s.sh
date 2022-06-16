@@ -60,6 +60,4 @@ awk '/urls),/{print;print "    path('\'''\'', include('\'''$app_name''.urls''\''
 sed -i "/path('admin/', admin.site.urls),/a\    path('$app_name/', include('$app_name.urls'))," $project_name/urls.py
 python manage.py migrate
 echo "${red}F${green}I${blue}N${magenta}I${red}S${green}H${blue}E${magenta}D ${blue}S${green}E${blue}T${magenta}U${blue}P🎉🎉${reset}"
-
-
-
+tput init
