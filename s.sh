@@ -12,16 +12,19 @@ blue=`tput setaf 4`
 magenta=`tput setaf 5`
 cyan=`tput setaf 6`
 reset= `tput sgr0`
+
 curl https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore > .gitignore
+
+#Django project setup
 pip install django
 echo "${green}Installing Django${reset}"
-echo "${blue}Enter a Project name${reset}"
-read project_name
+read -p "${blue}Enter a Project name${reset}: " project_name
 echo "${cyan}Creating Django project${reset}"
 django-admin startproject $project_name .
 echo "Project created"
-echo "${green}Creating a new Django app,Enter an app name${reset}"
-read app_name
+
+#Django app creation
+read -p "${green}Enter an app name${reset}: " app_name
 python manage.py startapp $app_name
 echo "${magenta}Creating a new Django app${reset}"
 
@@ -42,6 +45,7 @@ echo "from django.shortcuts import render" >> $app_name/views.py
 echo "def index(request):" >> $app_name/views.py
 echo "    return render(request, 'index.html')" >> $app_name/views.py
 echo "${green}View created${reset}"
+
 #add app to urls.py
 echo "${green}Adding app to urls.py......${reset}"
 touch $app_name/urls.py
