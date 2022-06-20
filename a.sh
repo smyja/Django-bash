@@ -27,7 +27,7 @@ echo "${magenta}Creating a new Django app${reset}"
 
 #add app to settings.py in green 
 echo "${green}Adding app to settings.py${reset}"
-gsed -i "/'django.contrib.staticfiles',/a\    '$app_name'," $project_name/settings.py
+sed -i '' "/'django.contrib.staticfiles',/a\    '$app_name'," $project_name/settings.py
 
 echo "${magenta}App added to settings.py${reset}"
 echo "Creating a new template....."
@@ -52,12 +52,12 @@ echo "${blue}App added to urls.py${reset}"
 
 #add include to project urls.py
 echo "${green}Adding app to project urls.py......${reset}"
-gsed -i 's/from django.urls import path/&,include/g' $project_name/urls.py
+sed -i '' 's/from django.urls import path/&,include/g' $project_name/urls.py
 
 #add app to project urls.py
 echo "${green}Adding app to project urls.py......${reset}"
 awk '/urls),/{print;print "    path('\'''\'', include('\'''$app_name''.urls''\'')),";next}1' $project_name/urls.py > $project_name/urls.py.tmp && mv $project_name/urls.py.tmp $project_name/urls.py
-gsed -i "/path('admin/', admin.site.urls),/a\    path('$app_name/', include('$app_name.urls'))," $project_name/urls.py
+sed -i '' "/path('admin/', admin.site.urls),/a\    path('$app_name/', include('$app_name.urls'))," $project_name/urls.py
 python manage.py migrate
 echo "${red}F${green}I${blue}N${magenta}I${red}S${green}H${blue}E${magenta}D ${blue}S${green}E${blue}T${magenta}U${blue}P🎉🎉${reset}"
 tput init
