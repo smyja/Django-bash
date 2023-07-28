@@ -70,12 +70,6 @@ echo "    path('', include('$app_name.urls'))," >> $project_name/urls.py
 echo "]" >> $project_name/urls.py
 echo "" >> $project_name/urls.py  # Add an empty line at the end
 
-# Finish
-python manage.py migrate
-echo "${red}F${green}I${blue}N${magenta}I${red}S${green}H${blue}E${magenta}D ${blue}S${green}E${blue}T${magenta}U${blue}P🎉🎉${reset}"
-tput init
-
-
 # Finish  
 python manage.py migrate
 echo "${red}F${green}I${blue}N${magenta}I${red}S${green}H${blue}E${magenta}D ${blue}S${green}E${blue}T${magenta}U${blue}P🎉🎉${reset}"
