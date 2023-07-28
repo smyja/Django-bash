@@ -16,7 +16,7 @@ reset=$(tput sgr0)
 # Download gitignore and install Django
 curl https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore > .gitignore
 pip install django
-
+pip install black
 # Create Django project
 echo "${green}Installing Django${reset}"
 echo "${blue}Enter a Project name${reset}"
@@ -33,8 +33,11 @@ echo "${magenta}Creating a new Django app${reset}"
 
 # Add app to settings
 echo "${green}Adding app to settings.py${reset}"
-sed -i "/django.contrib.staticfiles/a\    '$app_name'," $project_name/settings.py  
+cd $project_name  # Change working directory to the project directory
+sed -i "" "/django.contrib.staticfiles/a\\
+    '$app_name'," settings.py
 echo "${magenta}App added to settings.py${reset}"
+cd ..
 
 # Create template
 echo "Creating a new template....."
@@ -70,7 +73,11 @@ echo "    path('', include('$app_name.urls'))," >> $project_name/urls.py
 echo "]" >> $project_name/urls.py
 echo "" >> $project_name/urls.py  # Add an empty line at the end
 
-# Finish  
+# Format code using black
+echo "${cyan}Formatting code using black${reset}"
+black .
+echo "${green}Code formatting completed${reset}"
+# Finish
 python manage.py migrate
 echo "${red}F${green}I${blue}N${magenta}I${red}S${green}H${blue}E${magenta}D ${blue}S${green}E${blue}T${magenta}U${blue}P🎉🎉${reset}"
 tput init
