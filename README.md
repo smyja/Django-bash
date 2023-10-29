@@ -4,10 +4,10 @@ For Windows, change the virtual environment from `/venv/bin/activate` to `venv/s
 
 Prefarably use a shortlink and curl to call the file. :)
 
-Bitly shortlink is https://bit.ly/3zctaUI 
-Run `curl -L https://bit.ly/3zctaUI > s.sh` then `source s.sh`
+Bitly shortlink is 
+Run `curl -L  > s.sh` then `source s.sh`
 
 ### Running it on MacOS(use if source s.sh doesn't work)
 Mac OS X uses the BSD version of sed, which treats the -i option slightly differently.
 Use gsed instead, install with `brew install gnu-sed`
-then run `curl -L https://bit.ly/3n1AWJQ > a.sh` then `source a.sh`
+then run `curl -L  > a.sh` then `source a.sh`
